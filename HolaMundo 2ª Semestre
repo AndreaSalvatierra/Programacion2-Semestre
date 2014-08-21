@@ -1,0 +1,27 @@
+// HolaMundo.cpp : Defines the entry point for the console application.
+//Nombre: Andrea Salvatierra
+//Fecha:21/08/14
+//Nombre del Programa: Hola Mundo
+/* Otra Forma de comentario
+
+
+*/
+//Empiezan Librerias
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+//terminan librerias
+
+using namespace std;
+
+void main()
+
+{
+	int edad;
+	cout << "Ingrese su Edad: ";
+	cin  >> edad;
+	cout << "Su Edad Es: ";
+	cout << edad;
+	getch(); //Es para que se detenga la pantalla hasta presionar Enter.
+	
+}
