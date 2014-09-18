@@ -1,0 +1,13 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+using namespace std;
+void main()
+{
+	int i,N;
+	cout<< "Introducir N: ";
+	cin >> N;
+	for(i=1;i<=N;i++)
+		cout<< i*2-1<<"\t";
+	getch();
+}
