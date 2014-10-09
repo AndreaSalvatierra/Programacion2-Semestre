@@ -1,0 +1,19 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+using namespace std;
+void main()
+{
+	int n,i,suma;
+	cout<<"Hasta que nurmero quiere sumar: ";
+	cin>>n;
+	suma=0;
+	i=1;
+	while(i<n)
+	{
+		suma=suma+i;
+		i=i+2;
+	}
+	cout<<"La suma es: "<<suma;
+	getch();
+}
