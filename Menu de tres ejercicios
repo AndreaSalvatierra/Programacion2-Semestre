@@ -1,0 +1,81 @@
+// Menu de tres ejercicios.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+#include "stdlib.h"
+using namespace std;
+void main()
+{
+	int A,B,C,D,E,F,x,y,opcion,n,i,sig,suma;
+	float a,b,c,s,area;
+	do
+	{
+		cout<<"\tMENU\n\n";
+		cout<<"1.Serie\n";
+		cout<<"2.Sistemas de Ecuaciones\n";
+		cout<<"3.Area de un Triangulo\n";
+		cout<<"0.Salir\n";
+		cout<<"Escoja una Opcion: ";
+		cin>>opcion;
+		switch(opcion)
+		{
+		case 1: cout<<"Serie\n";
+			cout<<"Ingresar N: ";
+			cin>>n;
+			suma=0;
+			i=1;
+			sig=1;
+			while(i<=n)
+	{
+			suma=suma+sig*i;
+			i=i+1;
+			sig=sig*-1;
+	}
+			cout<<"La suma es :"<<suma;
+				getch(); break;
+		case 2: cout<<"Sistema de Ecuaciones\n";
+			cout<<"Ingresar el valor de A: ";
+			cin>>A;
+			cout<<"Ingresar el valor de B: ";
+			cin>>B;
+			cout<<"Ingresar el valor de C: ";
+			cin>>C;
+			cout<<"Ingresar el valor de D: ";
+			cin>>D;
+			cout<<"Ingresar el valor de E: ";
+			cin>>E;
+			cout<<"Ingresar el valor de F: ";
+			cin>>F;
+			x=((E*C)-(B*F))/((E*A)-(B*D));
+			y=((A*F)-(D*C))/((A*E)-(D*B));
+			cout<<"El valor de X es: "<<x;
+			cout<<"\nEl valor de Y es: "<<y;
+			getch(); break;
+		case 3: cout<<"Area del Triangulo\n";
+			cout<<"Ingrese a: ";
+			cin>>a;
+			cout<<"Ingrese b: ";
+			cin>>b;
+			cout<<"Ingrese c: ";
+			cin>>c;
+			s=(a+b+c)/2;
+			if(s>0)
+			{
+				area=sqrt(s*(s-a)*(s-b)*(s-c));
+				cout<<"El Area del Triangulo es: "<<area;
+			}
+			else
+				cout<<"Error";
+			getch(); break;
+		case 0: cout<<"Salir\n";
+			getch(); break;
+		default : cout<<"Error\n";
+		}
+		system("cls");
+	}
+	while(opcion!=0);
+	getch();
+}
