@@ -1,0 +1,29 @@
+// Base decimal.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+void main()
+{
+	int N,d;
+	float i,s,r;
+	cout<<"Introducir el numero: ";
+	cin>>N;
+	cout<<"Introducir r: ";
+	cin>>r;
+	s=0;
+	i=0;
+	while(N!=0)
+	{
+		d=N%10;
+		N=N/10;
+		s=s+d*pow(r,i);
+		i=i+1;
+	}
+	cout<<"El valor del numero en base decimal es: "<<s;
+	getch();
+}
