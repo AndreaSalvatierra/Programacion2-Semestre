@@ -58,7 +58,7 @@ void ordenar_vector(int edad[],int n)
 { 
   int aux;
     for(int i=0;i<n;i++)
-		for(int j=i+1;j<n-1;j++)
+		for(int j=i+1;j<=n-1;j++)
        if (edad[j]<edad[i])
 	   
 	   { aux=edad[i];
