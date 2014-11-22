@@ -1,0 +1,49 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define TAM 100
+using namespace std;
+void leer_vector(int vec[],int n);
+void mostrar_vector(int C[],int n);
+void calcular_vector(int n,int A[],int B[],int C[]);
+void main()
+{
+	int n,a[TAM],b[TAM],c[TAM];
+	do
+	{
+		cout<<"Ingrese el Numero de Elementos: ";
+		cin>>n;
+	}
+	while((n<=0)||(n>100));
+	cout<<"\nIngrese Datos del vector A: "<<"\n";
+	leer_vector(a,n);
+	cout<<"\nIngrese Datos del vector B: "<<"\n";
+	leer_vector(b,n);
+	calcular_vector(n,a,b,c);
+	cout<<"\nLa Suma de los Vectores es: "<<"\n";
+	mostrar_vector(c,n);
+getch();
+}
+void leer_vector(int vec[],int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		cout<<"["<<i<<"]=";
+		cin>>vec[i];
+	}
+}
+void mostrar_vector(int C[],int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		cout<<"["<<i<<"]=";
+		cout<<C[i]<<"\n";
+	}
+}
+void calcular_vector(int n,int A[],int B[],int C[])
+{
+	for(int i=0;i<n;i++)
+	{
+		C[i]=A[i]+B[i];
+	}
+}
