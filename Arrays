@@ -1,0 +1,52 @@
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+#define MAX 100
+using namespace std;
+
+void cargar(int vec[], int n);
+void mostrar(int vec[], int n);
+void eliminar(int vec[], int n, int e);
+
+void main()
+{
+  int n, vec[MAX], e;
+  do
+    {cout<<"Ingrese tamaño: ";
+     cin>>n;
+    }while(n>MAX) || (n<0); 
+  cargar(vec,n);
+  mostrar(vec,n);
+  cout<<endl<<"Ingrese numero para eliminar: ";
+  cin>>e;
+  eliminar(vec,n,e);
+  cout<<endl<<"Nuevo vector: "<<endl;
+  mostrar(vec,n);
+  getch();
+}
+
+void cargar(int vec[], int n)
+{ int i;
+  for(i=0; i<n; i++)
+    {cout<<endl<<"Ingrese V["<<(i+1)<<"]: ";
+     cin>>vec[i];
+    }
+}
+
+void mostrar(int vec[], int n)
+{ int i;
+  for(i=0; i<n; i++)
+   cout<<endl<<"V["<<(i+1)<<"]: "<<vec[i];
+}
+
+void eliminar(int vec[], int n, int e)
+{int i, j;
+ for(i=0; i<n; i++)
+    {if(vec[i]==e)
+        {for(j=i+1; j<n; j++)
+            vec[i]=vec[j];
+         n = n-1;
+         i = i-1;
+        }
+    }
+}
