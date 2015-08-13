@@ -7,7 +7,7 @@ using namespace std;
 struct tipo_vector
 {
   int V[];
-};
+}
 
 void cargar(tipo_vector vec[], int n);
 void mostrar(tipo_vector vec[], int n);
