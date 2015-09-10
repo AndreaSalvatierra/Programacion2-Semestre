@@ -1,71 +1,178 @@
 #include "stdafx.h"
 #include "conio.h"
 #include <iostream>
+#include <string>
+#include "math.h"
+#include "stdlib.h"
 #define TAM 100
 
 using namespace std;
-void leer_vector(int edad[],int n);
-void mostrar_vector(int edad[],int n);
-void ordenar_vector(int edad[],int n);
-bool validar_rango(int e,int ri,int rf);
 
-void main()
-{ 
-  int n,ed[TAM];
-  do
-  {cout<<"Ingrese el numero de elementos:";
-   cin>>n;
-  }
-   while((n>100)||(n<0));
+void cargar_vector(int A[], int n);
+void cargar_vectors(string nombre[], int n);
+void mostrar_vector(int A[], int n);
+void ordenar_vector(int A[], int n);
+int busqueda_binaria(int A[], int n, int clave);
+void arrays_paralelos(string nombre[], int nota[], int n);
+void mostrar_paralelos(string nombre[], int nota[], int n);
+void ordenar_vector(int A[], int n);
 
-  leer_vector(ed,n);
-  cout<<"Edades sin clasificar:\n";
-  mostrar_vector(ed,n);
-  ordenar_vector(ed,n) ;
-  cout<<"Edades clasificadas:\n";
-  mostrar_vector(ed,n);
-  getch();
+
+void main ()
+{
+	int opcion, n, sol, a,b, A[TAM],clave,z;
+	string nombre[TAM];
+
+	do
+	{
+		cout<<"1 . Cargar Vector Entero \n";
+		cout<<"2 . Cargar Vector String \n";
+		cout<<"3 . Mostrar Vector Entero \n";
+		cout<<"4 . Clasificar Vector Paralelo \n";
+		cout<<"5 . Mostrar Vector Paralelo \n";
+		cout<<"6 . Busqueda Binaria \n";	
+		cout<<"7 . Clasificacion por Insercion \n";
+		cout<<"0 . Salir\n";
+		cout<<"Opcion: ";
+		cin>>opcion;
+
+		switch (opcion)
+		{
+		case 1: do {
+					cout<<"ingrese el numero de elementos: ";
+					cin>>n;
+				}
+				while ((n>TAM) || (n<0));
+				cargar_vector(A,n);
+				getch(); break;
+
+		case 2: do {
+					cout<<"ingrese el numero de elementos : ";
+					cin>>n;
+				}
+				while ((n>TAM) || (n<0));
+				cargar_vectors(nombre,n);
+				getch(); break;
+
+		case 3: 
+				mostrar_vector(A,n);
+				getch(); break;
+
+		case 4: 
+				arrays_paralelos(nombre, A, n);
+				getch(); break;
+
+		case 5: 
+				mostrar_paralelos(nombre, A, n);
+				getch(); break;
+		case 6:
+				cout<<"Elemento a buscar: ";
+				cin>>clave;
+				z=busqueda_binaria(A,n,clave);
+				if(z==-1)
+					cout<<"No Existe";
+				else
+					cout<<"el dato esta en la posicion: "<<z<<"\t"<<A[z];
+				getch(); break;
+		case 7: 
+					cargar_vector(A,n);
+					ordenar_vector(A,n) ;
+					cout<<"Clasificacion por insercion:\n";
+					mostrar_vector(A,n);
+			    getch(); break;
+				
+		case 0:
+				cout<<"fin del programa";
+				getch(); break;
+
+		default:
+				cout<<"opcion invalida :";
+				getch(); break;
+
+		}
+		getch();
+		system("cls");
+	}while (opcion!=0);
 }
 
-
-void leer_vector(int edad[],int n)
-{ bool flag;
-  cout<<"Ingrese las edades:\n";
-  for(int i=0;i<n;i++)
-   {do 
-      {cout<<"["<<i<<"]=";
-	   cin>>edad[i];
-	   flag=validar_rango(edad[i],i,150);
-	  }
-	  while(!flag);
-   }   
-
+void cargar_vector(int A[], int n)
+{
+	for (int i=0; i<n; i++)
+	{
+		cout<<"A["<<i<<"] = ";
+		cin>>A[i];
+	}
 }
 
-void mostrar_vector(int edad[],int n)
-
-{ for(int i=0;i<n;i++)
-  cout<<"\n["<<i<<"] = "<<edad[i];
-}
-bool validar_rango(int e,int ri,int rf)
-{  if((e>=ri)&&(e<=rf))
-      return true;
-   else
-	   return false;
+void cargar_vectors(string nombre[], int n)
+{
+	cin.ignore();
+	for (int i=0; i<n; i++)
+	{
+		cout<<"nombre["<<i<<"] = ";
+		getline(cin, nombre[i]);
+	}
 }
 
-void ordenar_vector(int edad[],int n)
-{ 
+void mostrar_vector(int A[], int n)
+{
+	for (int i=0; i<n; i++)
+	{
+		cout<<"A["<<i<<"] = "<<A[i]<<endl;
+	}
+}
+
+void arrays_paralelos(string nombre[], int nota[], int n)
+{
+	int aux;
+	string auxs;
+	for (int i=0; i< n-1; i++)
+		for (int j=i+1; j<n; j++)
+			if (nombre[i] > nombre[j])
+			{
+				aux=nota[j];
+				nota[j]=nota[i];
+				nota[i]=aux;
+				auxs=nombre[j];
+				nombre[j]=nombre[i];
+				nombre[i]=auxs;
+
+			}
+}
+
+void mostrar_paralelos(string nombre[], int nota[], int n)
+{
+	cout<<"No. \t Nombre y Apellido \t Nota"<<endl;
+	cout<<"ªªªªªªªªªªªªªªªªªªªªªªªªªªªºªªªªªºªªªªªªªªªªª"<<endl;
+	for (int i=0; i<n; i++)
+		cout<<i+1<<" "<<nombre[i]<<"\t"<<nota[i]<<endl;
+}
+int busqueda_binaria(int A[], int n, int clave)
+{
+  int fin =-1,ini = 0,medio;
+  while (ini <= fin)
+    {
+      medio = (fin + ini)/2;
+      if (A[medio] == clave)
+         return medio;
+      else
+         if (clave < A[medio])
+            fin=medio-1;
+         else
+            ini=medio+1;
+    }
+  return -1;
+}
+void ordenar_vector(int A[], int n)
+{
   int aux;
     for(int i=0;i<n;i++)
 		for(int j=i+1;j<=n-1;j++)
-       if (edad[j]<edad[i])
+       if (A[j]<A[i])
 	   
-	   { aux=edad[i];
-	     edad[i]=edad[j];
-		 edad[j]=aux;
+	   { aux=A[i];
+	     A[i]=A[j];
+		 A[j]=aux;
 
 	   }
 }
-
-
